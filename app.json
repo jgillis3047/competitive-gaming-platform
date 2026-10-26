@@ -1,0 +1,120 @@
+{
+  "expo": {
+    "name": "Arena",
+    "slug": "gaming-app-54",
+    "description": "Challenges, crews, and competitive games with friends.",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "gamingapp54",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "extra": {
+      "EXPO_PUBLIC_SUPABASE_URL": "https://cnzxpfkilfphacwbtltl.supabase.co",
+      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "sb_publishable_V9Mk_xTalyj7v6nKm5wDgw_O46hyKE9",
+      "EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY": "pk_test_51T7r1L2ZGVO7tH7YYeUqs3GXNN9rbEUd2uLNvL5BoiXSzr07mu3j1PZmbyiClHnavwQEw4xYlgcp1cAOGmlDnig000MPhjaLuH",
+      "eas": {
+        "projectId": "563516b6-4e4f-42a7-8b84-6ad4539b4d5b"
+      },
+      "router": {}
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gamingapp54.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Arena uses your location to show nearby courts and verify you are on-site for record attempts.",
+        "NSCameraUsageDescription": "Arena uses your camera to record in-person activities with live shot and rep counters.",
+        "NSMicrophoneUsageDescription": "Arena can record audio with activity videos when enabled.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.gamingapp54.app",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#0a1628",
+        "foregroundImage": "./assets/images/icon.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1"
+          },
+          "android": {
+            "minSdkVersion": 24
+          }
+        }
+      ],
+      [
+        "expo-dev-client",
+        {
+          "launchMode": "launcher"
+        }
+      ],
+      [
+        "@sentry/react-native",
+        {
+          "organization": "arena-app",
+          "project": "react-native"
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.com.gamingapp54.app",
+          "enableGooglePay": false
+        }
+      ],
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      "expo-asset",
+      "expo-notifications",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Arena uses your location to show nearby courts and verify you are on-site for record attempts."
+        }
+      ],
+      [
+        "@kingstinct/react-native-healthkit",
+        {
+          "NSHealthShareUsageDescription": "Arena reads your Apple Watch run workouts to verify mile, 5K, and sprint times.",
+          "NSHealthUpdateUsageDescription": "Arena does not write health data.",
+          "background": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "owner": "jgilly30"
+  }
+}

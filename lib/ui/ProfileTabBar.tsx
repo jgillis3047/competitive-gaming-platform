@@ -1,0 +1,83 @@
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+
+import { colors } from "../theme/colors";
+import { pressSoft } from "./pressableStyles";
+
+export type ProfileTabKey = "overview" | "posts" | "activity" | "stats";
+
+const TABS: { key: ProfileTabKey; label: string }[] = [
+  { key: "overview", label: "Overview" },
+  { key: "posts", label: "Posts" },
+  { key: "activity", label: "Activity" },
+  { key: "stats", label: "Stats" },
+];
+
+export default function ProfileTabBar({
+  tab,
+  onChange,
+}: {
+  tab: ProfileTabKey;
+  onChange: (tab: ProfileTabKey) => void;
+}) {
+  return (
+    <View style={styles.row}>
+      {TABS.map((t) => {
+        const selected = tab === t.key;
+        return (
+          <Pressable
+            key={t.key}
+            onPress={() => onChange(t.key)}
+            style={({ pressed }) => [
+              styles.chipWrap,
+              selected && styles.chipWrapSelected,
+              pressSoft(pressed),
+            ]}
+            accessibilityRole="tab"
+            accessibilityState={{ selected }}
+          >
+            <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{t.label}</Text>
+            {selected ? <View style={styles.underline} /> : null}
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    gap: 4,
+    paddingHorizontal: 12,
+    marginBottom: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border,
+  },
+  chipWrap: {
+    flex: 1,
+    alignItems: "center",
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+  chipWrapSelected: {
+    backgroundColor: "rgba(99,102,241,0.12)",
+  },
+  chipText: {
+    color: colors.textMuted,
+    fontSize: 12,
+    fontWeight: "800",
+  },
+  chipTextSelected: {
+    color: colors.text,
+    fontWeight: "900",
+    fontSize: 13,
+  },
+  underline: {
+    marginTop: 6,
+    height: 3,
+    width: "60%",
+    borderRadius: 2,
+    backgroundColor: colors.accent,
+  },
+});
